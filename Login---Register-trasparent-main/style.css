@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*aggiungi colori in variabile
+:root var(--colore)
+*/
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    /*gradiente sullo sfondo*/
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)),
+        url('images/imgbk1.jpg');
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    text-transform: uppercase;
+}
+
+/*link menu nav*/
+.navigation a {
+    position: relative;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/*animazione bottone accedi*/
+.navigation a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: -6px;
+    background: #fff;
+    border-radius: 6px;
+    transform: scaleX(0);
+    transition: .5s;
+}
+
+/*animazione bottone accedi*/
+.navigation a:hover:after {
+    transform: scaleX(1);
+}
+
+/*impostazione bottone accedi*/
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: solid 2px #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+/*animazione bottone accedi*/
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: black;
+}
+
+/*box del form*/
+.wrapper {
+    position: relative;
+    width: 450px;
+    height: 480px;
+    background: transparent;
+    border: solid 2px rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform .3s ease, height .2s ease;
+    transform: scale(0);
+}
+
+.wrapper.active-popup {
+    transform: scale(1);
+}
+
+.wrapper.active {
+    height: 520px;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+/*trasnsizione accedi*/
+.wrapper .form-box.login {
+    transition: transform .3s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-420px);
+}
+/*transazione registra*/
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(420px);
+}
+
+.wrapper.active .form-box.register {
+    transform: translateX(0);
+    transition: transform .3s ease;
+}
+
+/*contenitore icona x*/
+.wrapper .icon-close {
+    font-size: 2.5em;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/*icona x*/
+.fa-solid fa-xmark {
+    text-align: center;
+}
+
+/*testo accedi all'interno del form*/
+.form-box h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+
+/*linea estetica sotto le celle input*/
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: solid 2px #162938;
+    margin: 30px 0;
+}
+
+/*testo email e password all'interno del form*/
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    pointer-events: none;
+    transition: .5s;
+}
+
+/*muove il testo email e password*/
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+/*non funziona se non inserisci @ nel form*/
+/*contenitore di input email e password*/
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 35px 0 10px;
+}
+
+/*icone email e password all'interno del form*/
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1em;
+    color: #162938;
+    line-height: 50px;
+}
+
+/*checkbox ricordami*/
+.remember-forgot {
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*come sopra + password dimenticata*/
+.remember-forgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+/*link password dimenticata*/
+.remember-forgot a {
+    color: #162938;
+    text-decoration: none;
+}
+
+/*aggiungi underline al passaggio del mouse*/
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+/*testo accedi bottone del form*/
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-bottom: 35px;
+}
+
+/*non hai un account?*/
+.login-register {
+    font-size: 1em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+}
+
+/*link registrati e accedi*/
+.login-register a {
+    font-weight: 600;
+    color: #162938;
+    text-decoration: none;
+}
+
+.login-register a:hover {
+    text-decoration: underline;
+}
+
